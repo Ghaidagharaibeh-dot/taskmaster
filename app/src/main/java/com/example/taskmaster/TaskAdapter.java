@@ -3,6 +3,7 @@ package com.example.taskmaster;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,7 +38,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public  void onBindViewHolder (@NonNull TaskViewHolder holder , int position ){
-
+        holder.task = taskList.get(position);
+        TextView title=holder.itemView.findViewById(R.id.taskTitle);
+        TextView body=holder.itemView.findViewById(R.id.taskBody);
+        TextView state=holder.itemView.findViewById(R.id.taskState);
+        
     }
 
     @Override
