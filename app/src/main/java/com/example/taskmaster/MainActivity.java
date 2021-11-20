@@ -3,9 +3,11 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -22,14 +24,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("student", "i need to study", "assigned"));
-        tasks.add(new Task("Reading", "i need to read", "assigned"));
-        tasks.add(new Task("Walking", "i need to walk", "assigned"));
+//        List<Task> tasks = new ArrayList<>();
+//        tasks.add(new Task("student", "i need to study", "assigned"));
+//        tasks.add(new Task("Reading", "i need to read", "assigned"));
+//        tasks.add(new Task("Walking", "i need to walk", "assigned"));
 
-        RecyclerView recyclerView = findViewById(R.id.taskReview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        recyclerView.setAdapter(new TaskAdapter(tasks));
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                TaskDataBase db = Room.databaseBuilder(getApplicationContext(),TaskDataBase.class,"data").build();
+                TaskDao taskDao= db.taskDao();
+                List<Task> tasks = taskDao.getAll();
+
+                RecyclerView recyclerView = findViewById(R.id.taskReview);
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                recyclerView.setAdapter(new TaskAdapter(tasks));
+            }
+        });
+
+
 
 
         Button addButton = (Button) findViewById(R.id.addTaskButton);
