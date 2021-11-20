@@ -27,4 +27,3 @@ public class TaskDetails extends AppCompatActivity {
     }
 
 
-}
