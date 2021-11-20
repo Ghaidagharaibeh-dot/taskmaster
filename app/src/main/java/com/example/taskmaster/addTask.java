@@ -20,6 +20,7 @@ public class AddTask extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"saved",Toast.LENGTH_LONG).show();
+
             }
         });
     }
