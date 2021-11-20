@@ -8,12 +8,10 @@
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/taskmaster/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/taskmaster/app/src/main/res/layout/activity_setting.xml" value="0.25" />
         <entry key="..\:/Users/STUDENT/AndroidStudioProjects/taskmaster/app/src/main/res/layout/activity_task_details.xml" value="0.19010416666666666" />
-<<<<<<< HEAD
+        <entry key="..\:/Users/STUDENT/AndroidStudioProjects/taskmaster/app/src/main/res/layout/fragment_task.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/STUDENT/Desktop/taskmaster/app/src/main/res/layout/activity_main.xml" value="0.34646739130434784" />
         <entry key="..\:/Users/STUDENT/Desktop/taskmaster/app/src/main/res/layout/activity_setting.xml" value="0.34646739130434784" />
         <entry key="..\:/Users/STUDENT/Desktop/taskmaster/app/src/main/res/layout/fragment_task.xml" value="0.5" />
-=======
->>>>>>> bfde7e669814ab4709bc5442fa5ac5f0b810522b
       </map>
     </option>
   </component>
