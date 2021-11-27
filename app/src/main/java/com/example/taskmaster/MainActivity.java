@@ -10,9 +10,15 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.AWSDataStorePlugin;
+import com.amplifyframework.datastore.generated.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +34,40 @@ public class MainActivity extends AppCompatActivity {
 //        tasks.add(new Task("student", "i need to study", "assigned"));
 //        tasks.add(new Task("Reading", "i need to read", "assigned"));
 //        tasks.add(new Task("Walking", "i need to walk", "assigned"));
+        try {
+            //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
+            Amplify.addPlugin(new AWSDataStorePlugin());
+            Amplify.configure(getApplicationContext());
+            Log.i("Amplify", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("Amplify", "Could not initialize Amplify", error);
+        }
 
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                TaskDataBase db = Room.databaseBuilder(getApplicationContext(),TaskDataBase.class,"data").build();
-                TaskDao taskDao= db.taskDao();
-                List<Task> tasks = taskDao.getAll();
+//        AsyncTask.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                TaskDataBase db = Room.databaseBuilder(getApplicationContext(),TaskDataBase.class,"data").build();
+//                TaskDao taskDao= db.taskDao();
+//                List<Task> tasks = taskDao.getAll();
+                List tasks =new ArrayList();
+                Amplify.DataStore.query(
+                        Task.class,
+                        items -> {
+                            while (items.hasNext()) {
+                                Task item = items.next();
+                                tasks.add(item);
+                                Log.i("Amplify", "Id " + item.getId());
+                            }
+                        },
+                        failure -> Log.e("Amplify", "Could not query DataStore", failure)
+                );
 
                 RecyclerView recyclerView = findViewById(R.id.taskReview);
                 recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                 recyclerView.setAdapter(new TaskAdapter(tasks));
-            }
-        });
+//            }
+//        }
+//        );
 
 
 
