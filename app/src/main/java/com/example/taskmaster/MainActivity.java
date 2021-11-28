@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -19,12 +21,24 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Task;
+import com.amplifyframework.datastore.generated.model.Team;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    List<Task> tasks = new ArrayList<>();
+    TaskAdapter adapter = new TaskAdapter(tasks);
+    Handler handler = new Handler();
+
+    Runnable runnable = new Runnable() {
+        @SuppressLint("NotifyDataSetChanged")
+        @Override
+        public void run() {
+            adapter.notifyDataSetChanged();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //                TaskDataBase db = Room.databaseBuilder(getApplicationContext(),TaskDataBase.class,"data").build();
 //                TaskDao taskDao= db.taskDao();
 //                List<Task> tasks = taskDao.getAll();
-                List tasks =new ArrayList();
+//                List tasks =new ArrayList();
                 Amplify.DataStore.query(
                         Task.class,
                         items -> {
@@ -62,9 +76,12 @@ public class MainActivity extends AppCompatActivity {
                         failure -> Log.e("Amplify", "Could not query DataStore", failure)
                 );
 
-                RecyclerView recyclerView = findViewById(R.id.taskReview);
-                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                recyclerView.setAdapter(new TaskAdapter(tasks));
+        RecyclerView recyclerView = findViewById(R.id.taskReview);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 //            }
 //        }
 //        );
@@ -107,6 +124,35 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         String user = sharedPreferences.getString("userNme", "user Task");
 
+        String team = sharedPreferences.getString("team","team");
+//        List<Task> tasks = new ArrayList<>();
+
+        Amplify.DataStore.query(
+                Team.class,Team.NAME.contains(team),
+                items -> {
+                    while (items.hasNext()) {
+                        Team item = items.next();
+
+                        Amplify.DataStore.query(
+                                Task.class,Task.TEAM_ID.eq( item.getId()),
+                                itemss -> {
+                                    tasks.clear();
+                                    while (itemss.hasNext()) {
+                                        Task item1 = itemss.next();
+                                        tasks.add(item1);
+                                        Log.i("DUCK", "list " + item1.getTeamId());
+
+                                    }
+                                    handler.post(runnable);
+                                },
+                                failure -> Log.e("Amplify", "Could not query DataStore", failure)
+                        );
+                        Log.i("Amplify", "Id " + item.getId());
+                    }
+                    handler.post(runnable);
+                },
+                failure -> Log.e("Amplify", "Could not query DataStore", failure)
+        );
 
         TextView nameLable = findViewById(R.id.nameLable);
         nameLable.setText(user + " tasks");
