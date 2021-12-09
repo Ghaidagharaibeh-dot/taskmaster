@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Task;
@@ -51,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
         try {
             //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
             Amplify.addPlugin(new AWSDataStorePlugin());
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
             Log.i("Amplify", "Initialized Amplify");
         } catch (AmplifyException error) {
             Log.e("Amplify", "Could not initialize Amplify", error);
         }
+
 
 //        AsyncTask.execute(new Runnable() {
 //            @Override
@@ -158,5 +163,8 @@ public class MainActivity extends AppCompatActivity {
         nameLable.setText(user + " tasks");
 
 
+    }
+    public void GotoLogin(View view){
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 }

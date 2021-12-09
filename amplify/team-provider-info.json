@@ -11,5 +11,23 @@
       "StackId": "arn:aws:cloudformation:us-east-2:419432717406:stack/amplify-taskmaster-dev-192451/f075cc20-4fa6-11ec-8478-02fd07c740be",
       "AmplifyAppId": "dur49b22gakpl"
     }
+  },
+  "ghaida": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-taskmaster-ghaida-175514-authRole",
+      "UnauthRoleArn": "arn:aws:iam::419432717406:role/amplify-taskmaster-ghaida-175514-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::419432717406:role/amplify-taskmaster-ghaida-175514-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-taskmaster-ghaida-175514-deployment",
+      "UnauthRoleName": "amplify-taskmaster-ghaida-175514-unauthRole",
+      "StackName": "amplify-taskmaster-ghaida-175514",
+      "StackId": "arn:aws:cloudformation:eu-central-1:419432717406:stack/amplify-taskmaster-ghaida-175514/6826dab0-5908-11ec-addc-0648f60ecf94",
+      "AmplifyAppId": "d4jycag8ea9rv"
+    },
+    "categories": {
+      "auth": {
+        "taskmaster14ed1a05": {}
+      }
+    }
   }
 }

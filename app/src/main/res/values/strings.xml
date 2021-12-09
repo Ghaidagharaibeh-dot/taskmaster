@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">taskmaster</string>
-    <string-array name="items" >
+    <string-array name="items">
         <item>team1</item>
         <item>team2</item>
         <item>team3</item>
+
     </string-array>
 </resources>
