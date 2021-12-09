@@ -25,7 +25,8 @@ public class AddTask extends AppCompatActivity {
 
         TextView title = findViewById(R.id.sp);
         TextView body = findViewById(R.id.editBody);
-        Button addTasks = (Button) findViewById(R.id.addTasks);
+        Button addTasks =  findViewById(R.id.addTasks);
+
 
 //        Team item1 = Team.builder()
 //                .name("team1")
@@ -74,10 +75,10 @@ public class AddTask extends AppCompatActivity {
                                 Task item1 = Task.builder().title(titleString).body(bodyString).state("Active").teamId(item.getId()).build();
                                 Amplify.DataStore.save(
                                         item1,
-                                        success -> Log.i("COMO", "Saved item: "),
+                                        success -> Log.i("Amplify", "Saved item: "),
                                         error -> Log.e("Amplify", "Could not save item to DataStore", error)
                                 );
-                                Log.i("EMAM", "Id was stored ");
+                                Log.i("Amplify", "Id was stored ");
                                 Log.i("Amplify", "Id " + item.getId());
                             }
                         },
