@@ -70,7 +70,7 @@ public class EmailConfirmationActivity extends AppCompatActivity {
     }
 
     private <T extends Model> void onSavedSuccess(DataStoreItemChange<T> tDataStoreItemChange) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
