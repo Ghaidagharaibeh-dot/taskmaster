@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
 //        tasks.add(new Task("student", "i need to study", "assigned"));
 //        tasks.add(new Task("Reading", "i need to read", "assigned"));
 //        tasks.add(new Task("Walking", "i need to walk", "assigned"));
-        try {
-            //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
-            Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
-            Amplify.addPlugin(new AWSCognitoAuthPlugin());
-            Amplify.configure(getApplicationContext());
-            Log.i("Amplify", "Initialized Amplify");
-        } catch (AmplifyException error) {
-            Log.e("Amplify", "Could not initialize Amplify", error);
-        }
+//        try {
+//            //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
+//            Amplify.addPlugin(new AWSDataStorePlugin());
+//            Amplify.addPlugin(new AWSApiPlugin());
+//            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+//            Amplify.configure(getApplicationContext());
+//            Log.i("Amplify", "Initialized Amplify");
+//        } catch (AmplifyException error) {
+//            Log.e("Amplify", "Could not initialize Amplify", error);
+//        }
 
 
 //        AsyncTask.execute(new Runnable() {

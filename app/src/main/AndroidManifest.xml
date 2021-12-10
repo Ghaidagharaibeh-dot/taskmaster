@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskmaster">
         <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".EmailConfirmationActivity"
             android:exported="true" />
         <activity
             android:name=".JoinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".TaskDetails"
@@ -53,8 +59,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
