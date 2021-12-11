@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
 //        tasks.add(new Task("student", "i need to study", "assigned"));
 //        tasks.add(new Task("Reading", "i need to read", "assigned"));
 //        tasks.add(new Task("Walking", "i need to walk", "assigned"));
-//        try {
-//            //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
-//            Amplify.addPlugin(new AWSDataStorePlugin());
-//            Amplify.addPlugin(new AWSApiPlugin());
-//            Amplify.addPlugin(new AWSCognitoAuthPlugin());
-//            Amplify.configure(getApplicationContext());
-//            Log.i("Amplify", "Initialized Amplify");
-//        } catch (AmplifyException error) {
-//            Log.e("Amplify", "Could not initialize Amplify", error);
-//        }
+        try {
+            //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
+            Amplify.addPlugin(new AWSDataStorePlugin());
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.configure(getApplicationContext());
+            Log.i("Amplify", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("Amplify", "Could not initialize Amplify", error);
+        }
 
 
 //        AsyncTask.execute(new Runnable() {
@@ -93,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+//        @Override
+//        public void onItemClicked(int position) {
+//            Intent intentTaskDetails = new Intent(getApplicationContext(), TaskDetails.class);
+//            intentTaskDetails.putExtra("img",team.get(position).getImg());
+//            startActivity(intentTaskDetails);
+//
+//        }
 
         Button addButton = (Button) findViewById(R.id.addTaskButton);
         Button allTaskButton = (Button) findViewById(R.id.AllTaskButton);
@@ -164,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void GotoLogin(View view){
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-    }
+//    public void GotoLogin(View view){
+//        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//    }
 }
