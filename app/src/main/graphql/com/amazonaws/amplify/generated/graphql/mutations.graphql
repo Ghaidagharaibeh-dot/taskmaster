@@ -9,6 +9,9 @@ mutation CreateTodo(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTodo(
@@ -21,6 +24,9 @@ mutation UpdateTodo(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTodo(
@@ -33,5 +39,50 @@ mutation DeleteTodo(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

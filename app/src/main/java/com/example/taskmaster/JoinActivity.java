@@ -32,7 +32,7 @@ public class JoinActivity extends AppCompatActivity {
 
         try {
             //Amplify.addPlugin(new AWSApiPlugin()); // UNCOMMENT this line once backend is deployed
-            Amplify.addPlugin(new AWSDataStorePlugin()); 
+            Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());

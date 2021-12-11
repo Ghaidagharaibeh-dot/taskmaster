@@ -29,6 +29,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.amplifyframework:aws-storage-s3:1.30.0'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.30.0'
+
     implementation 'com.amplifyframework:aws-auth-cognito:1.29.0'
     implementation 'com.amplifyframework:aws-api:1.28.3'
     implementation 'com.amplifyframework:aws-datastore:1.28.3'
@@ -48,6 +51,7 @@ dependencies {
     implementation 'com.amplifyframework:aws-api:1.30.0'
     implementation 'com.amplifyframework:aws-datastore:1.30.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
+
 
 
 

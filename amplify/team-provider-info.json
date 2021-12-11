@@ -27,6 +27,12 @@
     "categories": {
       "auth": {
         "taskmaster14ed1a05": {}
+      },
+      "function": {
+        "S3Triggercb5129f5": {
+          "deploymentBucketName": "amplify-taskmaster-ghaida-175514-deployment",
+          "s3Key": "amplify-builds/S3Triggercb5129f5-3331473878526a553278-build.zip"
+        }
       }
     }
   }

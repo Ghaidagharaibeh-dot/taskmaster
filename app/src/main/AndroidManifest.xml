@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.taskmaster">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,7 +34,9 @@
         <activity
             android:name=".Setting"
             android:exported="true"
-            android:parentActivityName=".MainActivity" /> <!-- <activity -->
+            android:parentActivityName=".MainActivity" />
+
+        <!-- <activity -->
         <!-- android:name=".AllTasks" -->
         <!-- android:exported="true" /> -->
         <activity
@@ -41,13 +47,23 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+
         </activity> <!--  -->
         <!-- <activity -->
         <!-- android:name=".AddTask" -->
         <!-- android:exported="true" /> -->
         <activity
             android:name=".AddTask"
+            android:exported="true"
             android:parentActivityName=".MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--                <data android:mimeType="text/plain" />-->
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -59,8 +75,11 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>

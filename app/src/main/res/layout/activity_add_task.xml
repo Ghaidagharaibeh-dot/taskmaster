@@ -65,10 +65,10 @@
         android:text="Add Task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editBody"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.081" />
 
     <TextView
         android:id="@+id/textView4"
@@ -78,9 +78,31 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTasks"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.621" />
 
+    <Button
+        android:id="@+id/photo"
+        android:layout_width="176dp"
+        android:layout_height="70dp"
+        android:text="Addphoto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67" />
+
+    <ImageView
+        android:id="@+id/shareImage"
+        android:layout_width="107dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.076" />
 </androidx.constraintlayout.widget.ConstraintLayout>
